@@ -1,0 +1,128 @@
+body {
+    padding-top: 50px;
+    font-family: 'Exo 2', sans-serif;
+}
+.starter-template {
+    padding: 40px 15px;
+    text-align: justify;
+}
+.author {
+    font-weight: bold;
+}
+.erreur {
+    background-color: red;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+.logo {
+    color: #fff !important;
+}
+.mt50 {
+    margin-top: 50px;
+}
+.mt15 {
+    margin-top: 15px;
+}
+.mb30{
+    margin-bottom: 30px;
+}
+.mb15{
+    margin-bottom: 15px;
+}
+.thumbnail {
+    width: 50%;
+}
+.prix {
+    font-size: 30px;
+}
+.navbar-cine {
+    background-color: #fecc00;
+    -moz-box-shadow: 0px 0px 10px 0px #656565;
+    -webkit-box-shadow: 0px 0px 10px 0px #656565;
+    -o-box-shadow: 0px 0px 10px 0px #656565;
+    box-shadow: 0px 0px 10px 0px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=180, Strength=30);
+}
+.logo2 {
+    margin-top: 10px;
+    color:#fff;
+    background:#000;
+    font-size: 30px;
+    font-weight: bold;
+    height: 45px;
+    line-height: 10px;
+}
+.logo2:hover {
+    color: #fecc00;
+}
+.logoimg {
+    width: 65px;
+    margin-left: 5px;
+}
+.navbar-nav>li>a {
+    margin-top: 8px;
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.detail {
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0;
+}
+h4{
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.jumbotron {
+    background-color: #222;
+    color: #fff;
+    margin-bottom: 0;
+}
+/* Notes par étoile */
+ul.notes-echelle {
+    margin:0;
+    padding:0;
+    font:.75em/1.2 Arial, Helvetica, sans-serif;
+}
+ul.notes-echelle li {
+    float:left;
+    margin:0;
+    padding:0;
+    list-style:none;
+    min-width:20px;
+    min-height:20px;
+}
+/* Correctif IE6 sur min-width & min-height */
+* html ul.notes-echelle.js li {
+    width:20px;
+    height:20px;
+}
+ul.notes-echelle li label {
+    display:block;
+    text-align:center;
+    line-height:20px;
+    background:url(../images/etoiles.gif) center top no-repeat;
+    cursor:pointer;
+}
+ul.notes-echelle li.note-off label {
+    background-position:center -60px;
+}
+ul.notes-echelle.js input {
+    position:absolute;
+    left:-999%;
+}
+/* Effet lorsque une note est cochée */
+ul.notes-echelle li.note-checked {
+    font-weight:bold;
+}
+/* Effet lorsque une note est tabulée au clavier */
+ul.notes-echelle.js li.note-focus {
+    outline:1px dotted #000;
+}
