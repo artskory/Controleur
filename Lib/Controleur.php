@@ -6,6 +6,12 @@ use Exception;
 
 abstract class Controleur {
 
+    protected $app;
+
+    public function __construct($app) {
+        $this->app = $app;
+    }
+
     public function action($action) {
         $nomAction = $action . 'Action';
 
@@ -25,7 +31,7 @@ abstract class Controleur {
         include __DIR__ . '/../Vue/' . $vue;
         $contenu = ob_get_clean();
 
-        include __DIR__ . '/../Vue/layout.html.php';
+        include __DIR__ . '/../Vue/' . $this->app->getLayout();
     }
 
     public function getFlash() {

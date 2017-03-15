@@ -7,6 +7,10 @@ namespace Modele;
  *
  * @author Human Booster
  */
-class UserManager {
-    //put your code here
+class UserManager extends EntiteManager {
+
+    public function getUserById() {
+        $sql = 'SELECT * FROM user ';
+    }
+
 }

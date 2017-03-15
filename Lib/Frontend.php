@@ -22,4 +22,9 @@ class Frontend extends Application {
         $controleur->action($action);
     }
 
+    public function __construct() {
+        $this->layout = 'layout.html.php';
+        parent::__construct();
+    }
+
 }
