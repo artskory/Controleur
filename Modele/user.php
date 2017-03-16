@@ -47,4 +47,24 @@ class user extends \Lib\Entite {
         return $this;
     }
 
+    public function setAuth($auth) {
+        if (!is_bool($auth)) {
+            throw new Exception('un boolean');
+        } else {
+            $_SESSION['auth'] = $auth;
+        }
+    }
+
+    public function isAuth() {
+        return isset($_SESSION['auth']) && $_SESSION['auth'] === TRUE;
+    }
+
+    public function isAdmin() {
+        return $this->isAuth() && $this->getPrivilege() >= 2;
+    }
+
+    public function __sleep() { // methode qui stock en session 
+        return ['id', 'login', 'privilege', 'email'];
+    }
+
 }

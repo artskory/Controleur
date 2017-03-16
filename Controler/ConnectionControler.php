@@ -19,10 +19,25 @@ class ConnectionControler extends \Lib\Controleur {
 
     public function loginAction() {
         //echo 'Je suis connection';
-        if ($_POST['token'] == $_SESSION['token'] && (time() - $_SESSION['tokenTime']) < 3) {
-            echo 'Vrai';
+        if ($_POST['token'] == $_SESSION['token'] && (time() - $_SESSION['tokenTime']) < 600) {
+            $um = new \Modele\UserManager();
+            $user = $um->getUserByLogin($_POST['login']);
+            if ($user) {
+                //var_dump($user);
+                if (password_verify($_POST['pwd'], $user->getPwd())) {
+                    //echo 'ok';
+                    $_SESSION['IPaddress'] = sha1($_SERVER['REMOTE_ADDR']);
+                    $_SESSION['userAgent'] = sha1($_SERVER['HTTP_USER_AGENT']);
+                    $user->setAuth(true);
+                    $_SESSION['user'] = $user;
+                } else {
+                    $this->setFlash('erreur codes');
+                }
+            } else {
+                $this->setFlash('erreur codes');
+            }
         } else {
-            echo "<h1>csrf</h1>";
+            $this->setFlash('csrf');
         }
 
         //header
