@@ -63,8 +63,12 @@ class user extends \Lib\Entite {
         return $this->isAuth() && $this->getPrivilege() >= 2;
     }
 
-    public function __sleep() { // methode qui stock en session 
+    public function __sleep() { // methode qui stock en session
         return ['id', 'login', 'privilege', 'email'];
+    }
+
+    public function isUser() {
+        return $this->isAuth() && $this->getPrivilege() < 2;
     }
 
 }

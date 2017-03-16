@@ -1,6 +1,7 @@
 RewriteEngine On
 # Query String Append Last
 RewriteRule ^admin appBackEnd.php [QSA,L]
+RewriteRule ^(article|produit) appBackEnd.php?module=$1 [L]
 RewriteRule ^$ app.php [L]
 RewriteRule ^([a-z]+)$ app.php?module=$1 [L]
 RewriteRule ^([a-z-]+)/([a-z-]+)$ app.php?module=$1&action=$2 [L]

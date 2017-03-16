@@ -37,4 +37,15 @@ class ArticleManager extends EntiteManager {
         return $article;
     }
 
+    public function getAllArticle() {
+        $sql = ('SELECT * From article ORDER BY id');
+        $result = $this->pdo->query($sql);
+
+        $result->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Article::class);
+        $articles = $result->fetchAll();
+
+
+        return $articles;
+    }
+
 }

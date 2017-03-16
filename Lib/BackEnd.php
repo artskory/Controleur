@@ -9,10 +9,10 @@ class BackEnd extends Application {
     public function run() {
         //echo 'Je suis le backend';
         //echo password_hash(123, PASSWORD_DEFAULT);
-        if ($this->user->isAdmin()) {
+        if ($this->getUser()->isAdmin()) {
             //echo 'ok';
             if ($_SESSION['IPaddress'] != sha1($_SERVER['REMOTE_ADDR']) || $_SESSION['userAgent'] != sha1($_SERVER['HTTP_USER_AGENT'])) {
-                exit('Grrr');
+                exit();
             }
 
             if (isset($_GET['module'])) {
@@ -32,8 +32,12 @@ class BackEnd extends Application {
         } else {
             $connection = $this->getControler('connection');
             if (isset($_POST['ok'])) {
+
                 $connection->loginAction();
             } else {
+                if ($this->getUser()->isUser()) {
+                    $connection->setFlash('Vous n\'avez pas les privilège pour acceder au backofice');
+                }
                 $connection->indexAction();
             }
         }

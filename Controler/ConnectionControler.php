@@ -47,4 +47,12 @@ class ConnectionControler extends \Lib\Controleur {
         exit();
     }
 
+    public function logoutAction() {
+        session_destroy();
+        setcookie(session_name(), session_id(), time() - 1, '/', null, null, true);
+
+        header('Location: ' . \Lib\Application::RACINE . 'admin');
+        exit();
+    }
+
 }
