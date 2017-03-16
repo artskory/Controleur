@@ -47,7 +47,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
 
-                        <li><a href="<?php echo \Lib\Frontend::RACINE; ?>admin?module=connection&action=logout">Logout</a></li>
+                        <li><a href="<?php echo \Lib\Frontend::RACINE; ?>admin?module=connection&action=logout"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Logout</a></li>
                     </ul>
                 </div>
             </div>

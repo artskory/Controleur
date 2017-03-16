@@ -37,8 +37,8 @@ class ArticleManager extends EntiteManager {
         return $article;
     }
 
-    public function getAllArticle() {
-        $sql = ('SELECT * From article ORDER BY id');
+    public function getAllArticle($offset, $limit) {
+        $sql = ('SELECT * From article LIMIT=' . $limit . 'OFFSET=? ORDER BY date DESC ');
         $result = $this->pdo->query($sql);
 
         $result->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Article::class);
