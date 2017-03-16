@@ -30,17 +30,21 @@ class ConnectionControler extends \Lib\Controleur {
                     $_SESSION['userAgent'] = sha1($_SERVER['HTTP_USER_AGENT']);
                     $user->setAuth(true);
                     $_SESSION['user'] = $user;
+                    setcookie(session_name(), session_id(), time() + 3600, '/', null, null, true);
                 } else {
-                    $this->setFlash('erreur codes');
+                    sleep(1);
+                    $this->setFlash('Login ou mot de passe incorrecte');
                 }
             } else {
-                $this->setFlash('erreur codes');
+                sleep(1);
+                $this->setFlash('Login ou mot de passe incorrecte');
             }
         } else {
             $this->setFlash('csrf');
         }
 
-        //header
+        header('Location: ' . \Lib\Application::RACINE . 'admin');
+        exit();
     }
 
 }
