@@ -38,14 +38,24 @@ class ArticleManager extends EntiteManager {
     }
 
     public function getAllArticle($offset, $limit) {
-        $sql = ('SELECT * From article LIMIT=' . $limit . 'OFFSET=? ORDER BY date DESC ');
-        $result = $this->pdo->query($sql);
-
+        $sql = ('SELECT * FROM article ORDER BY date DESC LIMIT ' . $limit . ' OFFSET ?');
+        $result = $this->pdo->prepare($sql);
+        $result->bindParam(1, $offset, PDO::PARAM_INT);
+        $result->execute();
         $result->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Article::class);
         $articles = $result->fetchAll();
 
 
         return $articles;
+    }
+
+    public function countArticle() {
+        $sql = ('SELECT COUNT(*) FROM article');
+        $result = $this->pdo->query($sql);
+
+
+
+        return $result->fetchColumn();
     }
 
 }

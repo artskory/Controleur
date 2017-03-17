@@ -18,7 +18,9 @@ class ArticleControler extends Controleur {
 
         $am = new ArticleManager();
         $articles = $am->getAllArticle($offset, $limit);
-        $this->render('article/index.html.php', ['articles' => $articles]);
+        $count = $am->countArticle();
+        $nbPages = ceil($count / $limit);
+        $this->render('article/index.html.php', ['articles' => $articles, 'nbPages' => $nbPages, 'page' => $page]);
     }
 
 }

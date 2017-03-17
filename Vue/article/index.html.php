@@ -21,9 +21,12 @@
     </tbody>
 </table>
 <ul class="pagination">
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
+    <li><a href='#' class="glyphicon glyphicon-menu-left"></a></li>
+    <?php $i = 1; ?>
+    <?php while ($i <= $nbPages): ?>
+
+        <li><a href="<?php echo \Lib\Application::RACINE ?>admin?page=<?php echo $i; ?>"><?php echo $i;
+    $i++; ?></a></li>
+<?php endwhile; ?>
+    <li><a href='#' class="glyphicon glyphicon-menu-right"></a></li>
 </ul>
