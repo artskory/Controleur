@@ -58,4 +58,22 @@ class ArticleManager extends EntiteManager {
         return $result->fetchColumn();
     }
 
+    public function insertArticle($article) {
+        $sql = 'INSERT INTO article VALUES (null, ?, ?, ?, ?, ?, ?)';
+        $result = $this->pdo->prepare($sql);
+
+        $result->bindValue(1, $article->getSlug(), PDO::PARAM_STR);
+        $result->bindValue(2, $article->getTitre(), PDO::PARAM_STR);
+        $result->bindValue(3, $article->getContenu(), PDO::PARAM_STR);
+        $result->bindValue(4, $article->getDate()->format('Y-m-d'));
+        $result->bindValue(5, $article->getAuteur()->getId(), PDO::PARAM_INT);
+        $result->bindValue(6, $article->getImage(), PDO::PARAM_STR);
+        try {
+            $result->execute();
+            return TRUE;
+        } catch (\PDOException $ex) {
+            return FALSE;
+        }
+    }
+
 }

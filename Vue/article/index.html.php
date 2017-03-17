@@ -1,4 +1,4 @@
-<a class="btn btn-default" href='?action=add_article'>+ Ajouté</a>
+<a class="btn btn-default" href='admin?action=create'>+ Ajouté</a>
 <table class="table">
     <thead>
         <tr>

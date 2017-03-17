@@ -57,12 +57,20 @@ class Article extends \Lib\Entite {
     }
 
     public function setTitre($titre) {
-        $this->titre = $titre;
+        if ($titre == '') {
+            $this->erreur[] = 'Entrer un titre';
+        } else {
+            $this->titre = $titre;
+        }
         return $this;
     }
 
     public function setContenu($contenu) {
-        $this->contenu = $contenu;
+        if ($contenu == '') {
+            $this->erreur[] = 'Entrer un contenu';
+        } else {
+            $this->contenu = $contenu;
+        }
         return $this;
     }
 
