@@ -7,12 +7,12 @@ abstract class Application {
     const RACINE = '/Controleur/';
     const RACINE_IMAGE = '/Controleur/Web/images/';
 
-    protected $user, $layout;
+    protected $user, $layout, $name;
 
     public abstract function run();
 
     public function getControler($module) {
-        $nomControleur = '\Controler\\' . ucfirst($module) . 'Controler';
+        $nomControleur = '\Controler\\' . $this->name . '\\' . ucfirst($module) . 'Controler';
         if (class_exists($nomControleur)) {
             return $controleur = new $nomControleur($this);
         } else {

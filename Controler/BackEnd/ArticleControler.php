@@ -1,6 +1,6 @@
 <?php
 
-namespace Controler;
+namespace Controler\BackEnd;
 
 use Lib\Controleur;
 use Modele\ArticleManager;

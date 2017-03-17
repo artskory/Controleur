@@ -1,6 +1,6 @@
 <?php
 
-namespace Controler;
+namespace Controler\FrontEnd;
 
 use Lib\Controleur;
 use Modele\CategorieManager;

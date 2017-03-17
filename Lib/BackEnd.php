@@ -45,6 +45,7 @@ class BackEnd extends Application {
 
     public function __construct() {
         $this->layout = 'layout_admin.html.php';
+        $this->name = 'BackEnd';
         parent::__construct();
     }
 

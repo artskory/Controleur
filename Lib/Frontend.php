@@ -24,6 +24,7 @@ class Frontend extends Application {
 
     public function __construct() {
         $this->layout = 'layout.html.php';
+        $this->name = 'FrontEnd';
         parent::__construct();
     }
 

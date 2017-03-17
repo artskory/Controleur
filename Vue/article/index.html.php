@@ -21,12 +21,29 @@
     </tbody>
 </table>
 <ul class="pagination">
-    <li><a href='#' class="glyphicon glyphicon-menu-left"></a></li>
-    <?php $i = 1; ?>
-    <?php while ($i <= $nbPages): ?>
 
-        <li><a href="<?php echo \Lib\Application::RACINE ?>admin?page=<?php echo $i; ?>"><?php echo $i;
-    $i++; ?></a></li>
-<?php endwhile; ?>
-    <li><a href='#' class="glyphicon glyphicon-menu-right"></a></li>
+    <?php $i = 1; ?>
+    <?php if ($page > 1): ?>
+
+
+        <li><a href='<?php echo \Lib\Application::RACINE ?>admin?page=<?php echo $page - 1; ?>' class="glyphicon glyphicon-menu-left"></a></li>
+        <?php
+    endif;
+    while ($i <= $nbPages):
+        if ($page == $i):
+            ?>
+            <li class="active" ><a href="<?php echo \Lib\Application::RACINE ?>admin?page=<?php echo $i; ?>"><?php
+                    echo $i;
+                    $i++;
+                    ?></a></li>
+        <?php else: ?>
+            <li><a href="<?php echo \Lib\Application::RACINE ?>admin?page=<?php echo $i; ?>"><?php
+                    echo $i;
+                    $i++;
+                    ?></a></li>
+        <?php endif; ?>
+    <?php endwhile; ?>
+    <?php if ($page < $nbPages): ?>
+        <li><a href='<?php echo \Lib\Application::RACINE ?>admin?page=<?php echo $page + 1; ?>' class="glyphicon glyphicon-menu-right"></a></li>
+        <?php endif; ?>
 </ul>
