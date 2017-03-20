@@ -15,8 +15,7 @@
             </div>
             <div class="form-group">
                 <input type="hidden" name="MAX_FILE_SIZE" value="10000000" > <!-- Value on par en octé -->
-                <!--<input type="file" id="image" name="image"> (format accepter .jpg/.gif/.png)<br/>-->
-                <input class="form-control" type="text" id="image" name="image" placeholder=" image"> <br/>
+                <input type="file" id="image" name="image">
                 <p class="help-block">(format accepter .jpg/.gif/.png)</p>
             </div>
         </div>

@@ -27,23 +27,35 @@ class ArticleControler extends Controleur {
     protected function createAction() {
         //echo 'je le create';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //var_dump($_FILES);
             $article = new Article($_POST);
-
             if ($article->getErreur()) {
                 $this->setFlash(implode('<br>', $article->getErreur()));
             } else {
+                if ($_FILES['image']['error'] != 4) {
+                    $upload = $article->upload(__DIR__ . '/../../web/images', $_FILES['image']);
+                    //var_dump($upload);
+                }
+                if ($upload['upload']) {
+                    $mini = $article->miniature(__DIR__ . '/../../web/images/' . $upload['message'], __DIR__ . '/../../web/images/thumbnails');
+                    $article->setImage($mini);
+                } else {
+                    $this->setFlash($upload['Erreru de miniature']);
+                }
                 $article->setSlug(Article::slugify($article->getTitre()));
 
                 $article->setAuteur($this->app->getUser());
-
+                //var_dump($_POST);
                 $am = new ArticleManager();
-                if ($am->insertArticle($article)) {
-                    $this->setFlash('Article enregister');
+                if ($id = $am->insertArticle($article)) {
+                    $this->setFlash('Article enregistrer');
+                    $article->setId($id);
                 } else {
                     $this->setFlash('Erreur d\'enregistrement en BDD');
                 }
-                //var_dump($article);
             }
+            //header('Location: ' . \Lib\Application::RACINE . 'admin?action=create');
+            //exit();
         }
         $this->render('article/create.html.php');
     }

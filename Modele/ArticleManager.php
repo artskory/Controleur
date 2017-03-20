@@ -70,7 +70,7 @@ class ArticleManager extends EntiteManager {
         $result->bindValue(6, $article->getImage(), PDO::PARAM_STR);
         try {
             $result->execute();
-            return TRUE;
+            return $this->pdo->lastInsertId();
         } catch (\PDOException $ex) {
             return FALSE;
         }

@@ -10,6 +10,7 @@ namespace Lib;
 abstract class Entite {
 
     use \Tools\Extrait;
+    use \Tools\upLoadImage;
 
     protected $id;
     protected $erreur = [];
