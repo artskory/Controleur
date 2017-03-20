@@ -44,11 +44,6 @@
                     </button>
                     <div id="navbar" class="navbar-collapse collapse">
                         <a class="navbar-brand" href="#">Admin</a>
-
-                        <ul class="nav navbar-nav">
-
-                            <li><a href="<?php echo \Lib\Frontend::RACINE; ?>admin?module=connection&action=logout"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Logout</a></li>
-                        </ul>
                     </div>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
